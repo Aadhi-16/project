@@ -1,0 +1,1166 @@
+package project;
+
+import java.awt.Color;
+
+import java.awt.Cursor;
+
+import java.awt.Font;
+
+import java.awt.Image;
+
+import java.awt.event.ActionEvent;
+
+import java.awt.event.ActionListener;
+
+import java.awt.image.BufferedImage;
+
+import java.io.File;
+
+import java.io.IOException;
+
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+
+import java.sql.PreparedStatement;
+
+import java.sql.SQLException;
+
+import java.util.Random;
+
+
+
+import javax.imageio.ImageIO;
+
+import javax.swing.BorderFactory;
+
+import javax.swing.ButtonGroup;
+
+import javax.swing.DefaultListModel;
+
+import javax.swing.ImageIcon;
+
+import javax.swing.JButton;
+
+import javax.swing.JCheckBox;
+
+import javax.swing.JComboBox;
+
+import javax.swing.JComponent;
+
+import javax.swing.JFileChooser;
+
+import javax.swing.JFrame;
+
+import javax.swing.JLabel;
+
+import javax.swing.JList;
+
+import javax.swing.JOptionPane;
+
+import javax.swing.JPanel;
+
+import javax.swing.JRadioButton;
+
+import javax.swing.JSeparator;
+
+import javax.swing.JTextArea;
+
+import javax.swing.JTextField;
+
+import javax.swing.SwingConstants;
+
+import javax.swing.border.Border;
+
+import javax.swing.event.DocumentEvent;
+
+import javax.swing.event.DocumentListener;
+
+
+
+public class Res {
+
+Res(){
+
+JFrame f1=new JFrame();
+
+
+
+JLabel l1= new JLabel("Name:");
+
+l1.setBounds(50, 40, 100, 20);
+
+JTextField t1=new JTextField();
+
+t1.setBounds(180, 40, 150, 20);
+
+JLabel l2=new JLabel("Father's Name:");
+
+l2.setBounds(50, 70, 110, 20);
+
+JTextField t2=new JTextField();
+
+t2.setBounds(180, 70, 150, 20);
+
+JLabel l3=new JLabel("Date Of Birth:");
+
+l3.setBounds(50, 100, 100, 20);
+
+JTextField t3=new JTextField();
+
+t3.setBounds(180, 100, 150, 20);
+
+JLabel l4=new JLabel("Address:");
+
+l4.setBounds(50, 150, 100, 20);
+
+JTextArea t4=new JTextArea();
+
+t4.setBounds(180, 130, 150,60);
+
+JLabel l5=new JLabel("Gender:");
+
+l5.setBounds(50, 215, 100, 20);
+
+JRadioButton rb1=new JRadioButton("Male");
+
+rb1.setBounds(180, 210, 70, 30);
+
+JRadioButton rb2=new JRadioButton("Female");
+
+rb2.setBounds(260, 210, 80, 30);
+
+rb1.setActionCommand("Male");
+
+rb2.setActionCommand("Female");
+
+ButtonGroup bg=new ButtonGroup();
+
+      bg.add(rb1);
+
+      bg.add(rb2);
+
+      String dob = t3.getText().trim();
+
+JLabel l6=new JLabel("Courses-Fees:");
+
+l6.setBounds(50, 250, 100, 30);
+
+DefaultListModel<String> J1=new DefaultListModel<>();
+
+   JList<String> list=new JList<>(J1);
+
+   list.setBounds(180, 250, 150, 100);
+
+J1.addElement("BCA - 18000");
+
+J1.addElement("B.COM - 15000");
+
+J1.addElement("BBA - 15000");
+
+J1.addElement("BSC CS - 18000");
+
+J1.addElement("BSC IT - 19000");
+
+JLabel l7=new JLabel("Courses:");
+
+l7.setBounds(50, 370, 100, 30);
+
+String choice[]= {" ","BCA","B.COM","BBA","BSC CS","BSC IT"};
+
+JComboBox jb1=new JComboBox(choice);
+
+jb1.setBounds(180, 370, 100, 30);
+
+JLabel l8=new JLabel("Languages:");
+
+l8.setBounds(50, 420, 100, 30);
+
+JCheckBox cb1=new JCheckBox("English",true);
+
+cb1.setBounds(180, 420, 70, 30);
+
+JCheckBox cb2=new JCheckBox("Tamil");
+
+cb2.setBounds(260, 420, 60, 30);
+
+JCheckBox cb3=new JCheckBox("Malayalam");
+
+cb3.setBounds(330, 420, 90, 30);
+
+JCheckBox cb4=new JCheckBox("Hindi");
+
+cb4.setBounds(430, 420, 80, 30);
+
+JLabel l9=new JLabel("State:");
+
+l9.setBounds(50, 480, 100, 30);
+
+JTextField t5=new JTextField();
+
+t5.setBounds(180, 485, 150, 20);
+
+JLabel l10=new JLabel("Email-id:");
+
+l10.setBounds(50, 520, 100, 30);
+
+JTextField t6=new JTextField();
+
+t6.setBounds(180, 525, 150, 20);
+
+JLabel l11=new JLabel("Mobile no:");
+
+l11.setBounds(50, 560, 100, 30);
+
+JTextField t7=new JTextField();
+
+t7.setBounds(180, 565, 150, 20);
+
+JButton b1=new JButton("Reset");
+
+b1.setBounds(600, 680, 80, 30);
+
+b1.setFont(new Font("Serif",Font.PLAIN,17));
+
+JButton b2=new JButton("Submit");
+
+b2.setBounds(690, 680, 90, 30);
+
+b2.setFont(new Font("Serif",Font.PLAIN,17));
+
+JLabel l12=new JLabel();
+
+l12.setBounds(400, 640, 180, 30);
+
+l12.setForeground(Color.red);;
+
+   JLabel l13,l14,l15,l16,l17,l18,l19,l20,l21;
+
+   l13=new JLabel("*");
+
+   l13.setFont(new Font("Serif",Font.PLAIN,17));
+
+   l13.setBounds(41, 40, 500, 20);
+
+   l13.setForeground(Color.red);
+
+   l14=new JLabel("*");
+
+   l14.setFont(new Font("Serif",Font.PLAIN,17));
+
+   l14.setBounds(41, 70, 500, 20);
+
+   l14.setForeground(Color.red);
+
+   l15=new JLabel("*");
+
+   l15.setFont(new Font("Serif",Font.PLAIN,17));
+
+   l15.setBounds(41, 100, 100, 20);
+
+   l15.setForeground(Color.red);
+
+   l16=new JLabel("*");
+
+   l16.setFont(new Font("Serif",Font.PLAIN,17));
+
+   l16.setBounds(41, 150, 100, 20);
+
+   l16.setForeground(Color.red);
+
+   l17=new JLabel("*");
+
+   l17.setFont(new Font("Serif",Font.PLAIN,17));
+
+   l17.setBounds(41, 215, 100, 20);
+
+   l17.setForeground(Color.red);
+
+   l18=new JLabel("*");
+
+   l18.setFont(new Font("Serif",Font.PLAIN,17));
+
+   l18.setBounds(41, 375, 100, 20);
+
+   l18.setForeground(Color.red);
+
+   l19=new JLabel("*");
+
+   l19.setFont(new Font("Serif",Font.PLAIN,17));
+
+   l19.setBounds(41, 520, 100, 30);
+
+   l19.setForeground(Color.red);
+
+   l20=new JLabel("*");
+
+   l20.setFont(new Font("Serif",Font.PLAIN,17));
+
+   l20.setBounds(41, 560, 100, 30);
+
+   l20.setForeground(Color.red);
+
+   l21=new JLabel(" ");
+
+   l21.setBounds(250, 250, 100, 100);
+
+   JLabel l22=new JLabel("Subject 1:");
+
+   l22.setBounds(580, 250, 100, 30);
+
+   l22.setFont(new Font("Serif",Font.PLAIN,17));
+
+   JLabel l23=new JLabel("Subject 2:");
+
+   l23.setBounds(580, 300, 100, 30);
+
+   l23.setFont(new Font("Serif",Font.PLAIN,17));
+
+   JLabel l24=new JLabel("Subject 3:");
+
+   l24.setBounds(580, 350, 100, 30);
+
+   l24.setFont(new Font("Serif",Font.PLAIN,17));
+
+   JLabel l25=new JLabel("Subject 4:");
+
+   l25.setBounds(580, 400, 100, 30);
+
+   l25.setFont(new Font("Serif",Font.PLAIN,17));
+
+   JLabel l26=new JLabel("Subject 5:");
+
+   l26.setBounds(580, 450, 100, 30);
+
+   l26.setFont(new Font("Serif",Font.PLAIN,17));
+
+   JLabel l27=new JLabel("Total:");
+
+   l27.setBounds(580, 500, 100, 30);
+
+   l27.setFont(new Font("Serif",Font.PLAIN,17));
+
+   JTextField t8=new JTextField();
+
+   t8.setBounds(670, 257, 100, 20);
+
+   JTextField t9=new JTextField();
+
+   t9.setBounds(670, 305, 100, 20);
+
+   JTextField t10=new JTextField();
+
+   t10.setBounds(670, 355, 100, 20);
+
+   JTextField t11=new JTextField();
+
+   t11.setBounds(670, 405, 100, 20);
+
+   JTextField t12=new JTextField();
+
+   t12.setBounds(670, 455, 100, 20);
+
+   JTextField t13=new JTextField();
+
+   t13.setBounds(670, 506, 100, 20);
+
+   /*JButton b3=new JButton("Get Total !");
+
+   b3.setBounds(780, 506, 110, 20);
+
+   b3.setFont(new Font("Serif",Font.PLAIN,17));*/
+
+   JButton b4=new JButton("Upload Photo !");
+
+   b4.setBounds(605, 203, 150, 25);
+
+   b4.setFont(new Font("Serif",Font.PLAIN,17));
+
+   
+
+   t13.setEditable(false); 
+
+   DocumentListener documentListener=new DocumentListener() {
+
+	   public void changeUpdate(DocumentEvent e) {
+
+		   updateTotal();
+
+	   }
+
+	   public void removeUpdate(DocumentEvent e) {
+
+		   updateTotal();
+
+	   }
+
+	  public void insertUpdate(DocumentEvent e) {
+
+		  updateTotal();
+
+	  }
+
+	  private void updateTotal() {
+
+		  int total=0;
+
+		  total+=parseSubjectValue(t8.getText());
+
+		  total+=parseSubjectValue(t9.getText());
+
+		  total+=parseSubjectValue(t10.getText());
+
+		  total+=parseSubjectValue(t11.getText());
+
+		  total+=parseSubjectValue(t12.getText());
+
+		  t13.setText(String.valueOf(total));
+
+	  }
+
+	  private int parseSubjectValue(String value) {
+
+		  try {
+
+			  return Integer.parseInt(value);
+
+		  }
+
+		  catch (NumberFormatException e) {
+
+			  return 0;
+
+		  }
+
+	  }
+
+	@Override
+
+	public void changedUpdate(DocumentEvent e) {
+
+		// TODO Auto-generated method stub	
+
+	}
+
+   };
+
+   t8.getDocument().addDocumentListener(documentListener);
+
+   t9.getDocument().addDocumentListener(documentListener);
+
+   t10.getDocument().addDocumentListener(documentListener);
+
+   t11.getDocument().addDocumentListener(documentListener);
+
+   t12.getDocument().addDocumentListener(documentListener);
+
+
+
+   f1.add(b4);
+
+   //f1.add(b3);
+
+   f1.add(t13);
+
+   f1.add(t12);
+
+   f1.add(t11);
+
+   f1.add(t10);
+
+   f1.add(t9);
+
+   f1.add(l27);
+
+   f1.add(t8);
+
+   f1.add(l26);
+
+   f1.add(l25);
+
+   f1.add(l24);
+
+   f1.add(l23);
+
+   f1.add(l22);
+
+   f1.add(l21);
+
+   f1.add(l13);
+
+   f1.add(l14);
+
+   f1.add(l15);
+
+   f1.add(l16);
+
+   f1.add(l17);
+
+   f1.add(l18);
+
+   f1.add(l19);
+
+   f1.add(l20);
+
+f1.add(b1);
+
+f1.add(b2);
+
+f1.add(t7);
+
+f1.add(l11);
+
+f1.add(l1);
+
+f1.add(t1);
+
+f1.add(l2);
+
+f1.add(t2);
+
+f1.add(l3);
+
+f1.add(t3);
+
+f1.add(l4);
+
+f1.add(t4);
+
+f1.add(l5);
+
+f1.add(l6);
+
+f1.add(rb1);
+
+f1.add(rb2);
+
+f1.add(list);
+
+f1.add(jb1);
+
+f1.add(l7);
+
+f1.add(l8);
+
+f1.add(cb1);
+
+f1.add(cb2);
+
+f1.add(cb3);
+
+f1.add(cb4);
+
+f1.add(t5);
+
+f1.add(l9);
+
+f1.add(t6);
+
+f1.add(l10);
+
+f1.add(l12);
+
+f1.setSize(1500,1500);
+
+f1.setLayout(null);
+
+f1.setVisible(true);
+
+f1.getContentPane().setBackground(new Color(180,216,230));
+
+l1.setFont(new Font("Serif",Font.PLAIN,17));
+
+l2.setFont(new Font("Serif",Font.PLAIN,15));
+
+l3.setFont(new Font("Serif",Font.PLAIN,15));
+
+l4.setFont(new Font("Serif",Font.PLAIN,17));
+
+l5.setFont(new Font("Serif",Font.PLAIN,17));
+
+l6.setFont(new Font("Serif",Font.PLAIN,17));
+
+l7.setFont(new Font("Serif",Font.PLAIN,17));
+
+l8.setFont(new Font("Serif",Font.PLAIN,17));
+
+l9.setFont(new Font("Serif",Font.PLAIN,17));
+
+l10.setFont(new Font("Serif",Font.PLAIN,17));
+
+l11.setFont(new Font("Serif",Font.PLAIN,17));
+
+l12.setFont(new Font("Serif",Font.PLAIN,17));
+
+
+
+   f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+   Border border=BorderFactory.createLineBorder(Color.BLACK,1);
+
+   t1.setBorder(border);
+
+   t2.setBorder(border);
+
+   t3.setBorder(border);
+
+   t4.setBorder(border);
+
+   t5.setBorder(border);
+
+   t6.setBorder(border);
+
+   t7.setBorder(border);
+
+   t8.setBorder(border);
+
+   t9.setBorder(border);
+
+   t10.setBorder(border);
+
+   t11.setBorder(border);
+
+   t12.setBorder(border);
+
+   t13.setBorder(border);
+
+   list.setBorder(border);
+
+
+
+   Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+
+   list.setCursor(cursor);
+
+   b1.setCursor(cursor);
+
+   b2.setCursor(cursor);
+
+   //b3.setCursor(cursor);
+
+   b4.setCursor(cursor);
+
+   b2.setBackground(new Color(144,238,144)); 
+
+   b1.setBackground(new Color(255,182,193));
+
+   //b3.setBackground(new Color(130,238,130));
+
+   b4.setBackground(new Color(153,0,153));
+
+   b4.setForeground(Color.WHITE);
+
+   ImageIcon ig=new ImageIcon("C:\\Users\\Sathiya\\Downloads\\vector stud.jpg");
+
+   JLabel l28=new JLabel(ig);
+
+   l28.setBounds(605, 50, 150, 170);
+
+   f1.add(l28);
+
+   JLabel l30=new JLabel("SSLC MARK (0/500) :");
+
+   l30.setBounds(960, 42, 170, 30);
+
+   l30.setFont(new Font("Serif",Font.PLAIN,17));
+
+   JTextField t14=new JTextField();
+
+   t14.setBounds(1160, 50, 120, 20);
+
+   t14.setBorder(border);
+
+   f1.add(t14);
+
+   JLabel l31=new JLabel("SCHOOL NAME (10)  :");
+
+   l31.setBounds(960, 110, 180, 30);
+
+   l31.setFont(new Font("Serif",Font.PLAIN,17));
+
+   f1.add(l31);
+
+   JTextArea t15=new JTextArea();
+
+   t15.setBounds(1160, 90, 160,80);
+
+   t15.setBorder(border);
+
+   f1.add(t15);
+
+   JLabel l32=new JLabel("HSLC MARK (0/600) :");
+
+   l32.setBounds(960, 190, 170, 30);
+
+   l32.setFont(new Font("Serif",Font.PLAIN,17));
+
+   f1.add(l32);
+
+   JTextField t16=new JTextField();
+
+   t16.setBounds(1160, 200, 120,20);
+
+   t16.setBorder(border);
+
+   f1.add(t16);
+
+   JLabel l33=new JLabel("SCHOOL NAME (12)  :");
+
+   l33.setBounds(960, 280, 180, 30);
+
+   l33.setFont(new Font("Serif",Font.PLAIN,17));
+
+   f1.add(l33);
+
+   JTextArea t17=new JTextArea();
+
+   t17.setBounds(1160, 260, 160,80);
+
+   t17.setBorder(border);
+
+   f1.add(t17);
+
+   JSeparator sp=new JSeparator(SwingConstants.VERTICAL);
+
+   sp.setBounds(535, 40,1, 580);
+
+   sp.setBackground(Color.black);
+
+   JSeparator sp1=new JSeparator(SwingConstants.VERTICAL);
+
+   sp1.setBounds(900, 40,1, 580);
+
+   sp1.setBackground(Color.black);
+
+   f1.add(sp1);
+
+   f1.add(sp);
+
+   f1.add(l30);
+
+   /*b3.addActionListener(new ActionListener() {
+
+	   public void actionPerformed(ActionEvent e) {
+
+		   
+
+		  try {
+
+			  int m1 =Integer.parseInt(t8.getText());
+
+			  int m2 =Integer.parseInt(t9.getText());
+
+			  int m3 =Integer.parseInt(t10.getText());
+
+			  int m4 =Integer.parseInt(t11.getText());
+
+			  int m5 =Integer.parseInt(t12.getText());
+
+			int total=m1+m2+m3+m4+m5;
+
+			t13.setText(String.valueOf(total));
+
+		  }
+
+		  catch(NumberFormatException ex){
+
+			JOptionPane.showMessageDialog(f1, "Enter valid numbers","InputError,",JOptionPane.ERROR_MESSAGE);  
+
+		  }
+
+	   }
+
+   });*/
+
+   
+
+   b1.addActionListener(new ActionListener() {
+
+    public void actionPerformed(ActionEvent e) {
+
+   
+
+    t1.setText("");
+
+    t2.setText("");
+
+    t3.setText("");
+
+    t4.setText("");
+
+    t5.setText("");
+
+    t6.setText("");
+
+    t7.setText("");
+
+    t8.setText("");
+
+    t9.setText("");
+
+    t10.setText("");
+
+    t11.setText("");
+
+    t12.setText("");
+
+    t13.setText("");
+
+    t14.setText("");
+
+    t15.setText("");
+
+    t16.setText("");
+
+    t17.setText("");
+
+    bg.clearSelection();
+
+    cb1.setSelected(true);
+
+    cb2.setSelected(false);
+
+    cb3.setSelected(false);
+
+    cb4.setSelected(false);
+
+    jb1.setSelectedIndex(0);
+
+    l28.setIcon(null);
+
+    l28.setIcon(new ImageIcon("C://Users//Sathiya//Downloads//vector stud.jpg"));
+
+    }
+
+   });
+
+   b4.addActionListener(new ActionListener() {
+
+	   public void actionPerformed(ActionEvent e) {
+
+		   JFileChooser fileChooser=new JFileChooser();
+
+		   fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+		   int result=fileChooser.showOpenDialog(null);
+
+		   if(result==JFileChooser.APPROVE_OPTION) {
+
+			   File selectedFile = fileChooser.getSelectedFile();
+
+			   try {
+
+				   BufferedImage img=ImageIO.read(selectedFile);
+
+				   ImageIcon imageIcon=new ImageIcon(img.getScaledInstance(l28.getWidth(),l28.getHeight(),Image.SCALE_SMOOTH));
+
+				   l28.setIcon(imageIcon);
+
+			   }
+
+			   catch(IOException ioException) {
+
+				   JOptionPane.showMessageDialog(null, "Failed to load image.","Error",JOptionPane.ERROR_MESSAGE);
+
+			   }
+
+		   }
+
+	   }
+
+	   });
+
+   
+
+   b2.addActionListener(new ActionListener() {
+
+    public void actionPerformed(ActionEvent e) {
+
+     
+
+    String a,b,c,d,g,h,i,j,k,l,m;
+
+    a=t1.getText().trim();
+
+    b=t2.getText().trim();
+
+    c=t3.getText().trim();
+
+    d=t4.getText().trim();
+
+   
+
+    g=t7.getText().trim();
+
+    h=t6.getText().trim();
+
+    i=t8.getText().trim();
+
+    j=t9.getText().trim();
+
+    k=t10.getText().trim();
+
+    l=t11.getText().trim();
+
+    m=t12.getText().trim();
+
+    
+
+    if(a.isEmpty())
+
+    {
+
+    l12.setText("Please fill this * fields..!");
+
+    }
+
+    else if(b.isEmpty())
+
+    {
+
+    l12.setText("Please fill this * fields..!");
+
+    }
+
+    else if(c.isEmpty())
+
+    {
+
+    l12.setText("Please fill this * fields..!");
+
+    }
+
+    else if(d.isEmpty())
+
+    {
+
+    l12.setText("Please fill this * fields..!");
+
+    }
+
+   
+
+   
+
+    else if(g.isEmpty())
+
+    {
+
+    l12.setText("Please fill this * fields..!");
+
+    }
+
+    else if(h.isEmpty())
+
+    {
+
+    l12.setText("Please fill this * fields..!");
+
+    }
+
+    else {
+
+    JOptionPane.showMessageDialog(l21, "Submitted Successfully..!");
+
+    }
+
+    try 
+
+    {
+
+                   //Creating Connection Object
+
+   Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/studresf","root","root");
+
+   conn.setAutoCommit(false);
+
+   
+
+   String name = t1.getText(); // Assuming you have a JTextField for name
+
+   String father_name = t2.getText(); // JTextField for father's name
+
+   int dob =Integer.parseInt(t3.getText()); // JTextField for date of birth
+
+   String address = t4.getText(); // JTextField for address
+
+   String gender=bg.getSelection().getActionCommand().toString();
+
+   String course = jb1.getSelectedItem().toString(); // JComboBox for course
+
+   String languages = ""; // Collect selected languages here
+
+   if (cb1.isSelected()) languages += "English ";
+
+   if (cb2.isSelected()) languages += "Tamil ";
+
+   if (cb3.isSelected()) languages += "Malayalam ";
+
+   if (cb4.isSelected()) languages += "Hindi ";
+
+   String state=t5.getText();
+
+   String email = t6.getText(); // JTextField for email
+
+   String mobile = t7.getText();
+
+   String Subject_1=t8.getText();
+
+   String Subject_2=t9.getText();
+
+   String Subject_3=t10.getText();
+
+   String Subject_4=t11.getText();
+
+   String Subject_5=t12.getText();
+
+   String Total=t13.getText();
+
+   
+
+   
+
+   // Database connection details
+
+   String sql = "INSERT INTO studreg(name, father_name, dob, address, gender, course, languages, state, email, mobile,Subject_1,Subject_2,Subject_3,Subject_4,Subject_5,Total) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+       pstmt.setString(1, name);
+
+       pstmt.setString(2, father_name);
+
+       pstmt.setInt(3, dob);
+
+       pstmt.setString(4, address);
+
+       pstmt.setString(5, gender);
+
+       pstmt.setString(6, course);
+
+       pstmt.setString(7, languages);
+
+       pstmt.setString(8, state);
+
+       pstmt.setString(9, email);
+
+       pstmt.setString(10, mobile);
+
+       pstmt.setString(11, Subject_1);
+
+       pstmt.setString(12, Subject_2);
+
+       pstmt.setString(13, Subject_3);
+
+       pstmt.setString(14, Subject_4);
+
+       pstmt.setString(15, Subject_5);
+
+       pstmt.setString(16, Total);
+
+       int rowsAffected=pstmt.executeUpdate();
+
+       if(rowsAffected >0 ) {
+
+    	   JOptionPane.showMessageDialog(null, "Registration Successful!");
+
+       }
+
+       conn.commit();
+
+    t1.setText("");
+
+    t2.setText("");
+
+    t3.setText("");
+
+    t4.setText("");
+
+    t5.setText("");
+
+    t6.setText("");
+
+    t7.setText("");
+
+    t8.setText("");
+
+    t9.setText("");
+
+    t10.setText("");
+
+    t11.setText("");
+
+    t12.setText("");
+
+    t13.setText("");
+
+    bg.clearSelection();
+
+    cb1.setSelected(true);
+
+    cb2.setSelected(false);
+
+    cb3.setSelected(false);
+
+    cb4.setSelected(false);
+
+    jb1.setSelectedIndex(0);
+
+    }
+
+    
+
+    catch(SQLException ex) {
+
+       ex.printStackTrace();
+
+       JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+
+    
+
+     } 
+
+    
+
+    }
+
+    });
+
+
+
+
+
+Random rand =new Random();
+
+int applicationNumber=rand.nextInt(999999)+10000000;
+
+JFrame f2=new JFrame("Application Number");
+
+JLabel l29=new JLabel("Your Application Number is : " + applicationNumber);
+
+l29.setFont(new Font("Serif",Font.BOLD,22));
+
+l29.setBounds(50,50,400,30);
+
+f2.add(l29);
+
+f2.setSize(500,200);
+
+f2.setLayout(null);
+
+f2.setVisible(true);
+
+f2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+f2.getContentPane().setBackground(new Color(180,216,230));
+
+}
+
+
+public static void main(String[] args) {
+
+new Res();
+
+}
+
+   }
